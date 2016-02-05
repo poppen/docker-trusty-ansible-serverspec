@@ -1,17 +1,17 @@
 FROM buildpack-deps:trusty
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+                python2.7 \
                 libpython2.7-dev \
-                python-setuptools \
                 software-properties-common \
+        && curl -fSL 'https://bootstrap.pypa.io/get-pip.py' | python2 \
         && apt-add-repository -y ppa:brightbox/ruby-ng \
         && apt-get update && apt-get install -y --no-install-recommends \
                 rake \
                 ruby2.3 \
         && rm -rf /var/lib/apt/lists/*
 
-RUN easy_install pip
-RUN pip install ansible-lint
-RUN pip install 'ansible<2.0'
+RUN pip install --no-cache-dir 'ansible<2.0'
+RUN pip install --no-cache-dir ansible-lint
 
 RUN gem install serverspec
