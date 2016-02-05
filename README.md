@@ -1,0 +1,1 @@
+# docker-trusty-ansible-serverspec
