@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t poppen/trusty-ansible-serverspec -f ansible-1.9/Dockerfile .
+
+test:
+  override:
+    - docker run -t -v `pwd`:/data/ -w=/data/ projectatomic/dockerfile-lint dockerfile_lint -f ansible-1.9/Dockerfile
