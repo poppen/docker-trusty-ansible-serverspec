@@ -1,4 +1,4 @@
-FROM buildpack-deps:truthy
+FROM buildpack-deps:trusty
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
                 libpython2.7-dev \
