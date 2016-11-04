@@ -1,1 +1,1 @@
-# docker-trusty-ansible-serverspec
+# docker-ubuntu-ansible-serverspec
