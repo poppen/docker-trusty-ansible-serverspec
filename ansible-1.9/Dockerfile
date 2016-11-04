@@ -1,4 +1,5 @@
 FROM buildpack-deps:trusty
+MAINTAINER MATSUI Shinsuke <poppen.jp@gmail.com>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
                 python2.7 \
