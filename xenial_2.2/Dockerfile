@@ -1,4 +1,5 @@
-FROM buildpack-deps:trusty
+FROM buildpack-deps:xenial
+MAINTAINER MATSUI Shinsuke <poppen.jp@gmail.com>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
                 python2.7 \
@@ -9,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && apt-get update && apt-get install -y --no-install-recommends \
                 rake \
                 ruby2.3 \
-        && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir ansible
-RUN pip install --no-cache-dir ansible-lint
-
-RUN gem install serverspec
+        && rm -rf /var/lib/apt/lists/* \
+        && pip install --no-cache-dir \
+                'ansible==2.2.*' \
+                ansible-lint \
+        && gem install --no-document \
+                serverspec

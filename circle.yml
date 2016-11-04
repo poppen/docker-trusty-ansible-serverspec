@@ -5,10 +5,10 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t poppen/trusty-ansible-serverspec:1.9 -f ansible-1.9/Dockerfile .
-    - docker build -t poppen/trusty-ansible-serverspec:2.0 -f ansible-2.0/Dockerfile .
+    - docker build -t poppen/trusty-ansible-serverspec:xenial -f xenial_1.9/Dockerfile .
+    - docker build -t poppen/trusty-ansible-serverspec:xenial -f xenial_2.2/Dockerfile .
 
 test:
   override:
-    - docker run -t -v `pwd`:/data/ -w=/data/ projectatomic/dockerfile-lint dockerfile_lint -f ansible-1.9/Dockerfile
-    - docker run -t -v `pwd`:/data/ -w=/data/ projectatomic/dockerfile-lint dockerfile_lint -f ansible-2.0/Dockerfile
+    - docker run -t -v `pwd`:/data/ -w=/data/ lukasmartinelli/hadolint hadolint --ignore DL3008 --ignore DL3013 xenial_1.9/Dockerfile
+    - docker run -t -v `pwd`:/data/ -w=/data/ lukasmartinelli/hadolint hadolint --ignore DL3008 --ignore DL3013 xenial_2.2/Dockerfile
