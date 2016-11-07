@@ -15,4 +15,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
                 'ansible=={{.AnsibleVer}}.*' \
                 ansible-lint \
         && gem install --no-document \
-                serverspec
+                serverspec \
+                ansible_spec
