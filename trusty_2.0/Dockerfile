@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && apt-get update && apt-get install -y --no-install-recommends \
                 rake \
                 ruby2.3 \
+                ruby2.3-dev \
         && rm -rf /var/lib/apt/lists/* \
         && pip install --no-cache-dir \
                 'ansible==2.0.*' \
